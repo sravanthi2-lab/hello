@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops! You Forgot to Log Out!</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+        }
+        .warning {
+            font-size: 2em;
+            font-weight: bold;
+            color: red;
+            animation: flash 1s infinite alternate;
+        }
+        @keyframes flash {
+            from { opacity: 1; }
+            to { opacity: 0.5; }
+        }
+        .countdown {
+            font-size: 1.5em;
+            margin: 20px;
+        }
+        .hacker-message {
+            color: lime;
+            font-family: monospace;
+            display: none;
+        }
+        .logout-button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="warning">WARNING: You Forgot to Log Out!</h1>
+    <p class="countdown">Logging out in <span id="timer">10</span> seconds...</p>
+    <p class="hacker-message" id="hackerMessage">ACCESS GRANTED. DOWNLOADING PERSONAL DATA...</p>
+    <button class="logout-button" id="logoutButton">Log Out</button>
+    
+    <script>
+        let timeLeft = 10;
+        const timer = document.getElementById("timer");
+        const hackerMessage = document.getElementById("hackerMessage");
+        const logoutButton = document.getElementById("logoutButton");
+        
+        setInterval(() => {
+            if (timeLeft > 1) {
+                timeLeft--;
+                timer.textContent = timeLeft;
+            } else {
+                hackerMessage.style.display = "block";
+                timer.textContent = "ERROR! LOGOUT FAILED!";
+            }
+        }, 1000);
+        
+        logoutButton.addEventListener("mouseover", function() {
+            logoutButton.style.left = Math.random() * window.innerWidth + "px";
+            logoutButton.style.top = Math.random() * window.innerHeight + "px";
+        });
+    </script>
+</body>
+</html>
+
